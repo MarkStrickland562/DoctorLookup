@@ -4,18 +4,29 @@ import './styles.css';
 import $ from 'jquery';
 import DoctorLookup from './../src/doctor-lookup.js';
 
+let clearSearch = function() {
+  $("#searchFirstName").val('');
+  $("#searchLastName").val('');
+  $("#searchFullName").val('');
+  $("#searchIssue").val('');
+  $("#searchLocation").val('');
+}
+
 $(document).ready(function() {
   $("#search-form").submit(function(event){
     event.preventDefault();
 
+    $("#table-rows").val('');
     $("#doctor-info").hide();
     $("#searching").show();
+    $("#nodata").hide();
 
     let searchString = "";
     let tableText = "";
     let phone = "";
     let website = "";
     let accepting = "";
+    let table="";
 
     if ($('#searchFirstName').val() != "") {
       searchString = "?first_name=" + $('#searchFirstName').val();
@@ -32,12 +43,14 @@ $(document).ready(function() {
       alert("Please enter search criteria!");
     }
 
+    clearSearch();
+
     let doctorLookup = new DoctorLookup();
 
     let promise = doctorLookup.getDoctorInfo(searchString);
     promise.then(function(response) {
       let body = JSON.parse(response);
-      var table = $('#doctor-info');
+      table = $('#doctor-info');
 
       table.append('<thead><tr><th>First Name</th><th>Last Name</th><th>Phone Number(s)</th><th>Website</th><th>Accepting Patients?</th></tr></thead>');
       body.data.forEach(function(doctor) {
@@ -51,7 +64,7 @@ $(document).ready(function() {
             phone += thephone.number + '<br>';
           });
           if (practice.website != undefined) {
-            website += practice.website;
+            website += '<a href="' + practice.website + '">' + practice.website + '</a>';
           }
         });
         if (doctor.practices[0] != undefined && doctor.practices[0].accepts_new_patients != undefined) {
@@ -60,6 +73,8 @@ $(document).ready(function() {
           } else {
             accepting += 'No';
           }
+        } else {
+          accepting += 'No';
         }
         phone += '</td>';
         website += '</td>';
@@ -70,8 +85,16 @@ $(document).ready(function() {
         tableText += '</tr>';
         table.append(tableText);
       });
-      $("#searching").hide();
-      $("#doctor-info").show();
+
+      let doctorsCount = body.data.length;
+      if (doctorsCount > 0) {
+        $("#doctorCount").text(doctorsCount);
+        $("#searching").hide();
+        $("#doctor-info").show();
+      } else {
+        $("#searching").hide();
+        $("#nodata").show();
+      }
 
 // console.log(body.data[0].profile.first_name);
 // console.log(body.data[0].profile.last_name);

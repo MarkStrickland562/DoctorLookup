@@ -2,7 +2,7 @@ export default class DoctorLookup {
 
   getDoctorInfo(searchString) {
 
-    let url = "https://api.betterdoctor.com/2016-03-01/doctors" + searchString + "&user_key=" + `${process.env.exports.apiKey}`;
+    let url = "https://api.betterdoctor.com/2016-03-01/doctors" + searchString + "&limit=100" + "&user_key=" + `${process.env.exports.apiKey}`;
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
 
