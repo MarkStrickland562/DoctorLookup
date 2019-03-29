@@ -17,6 +17,9 @@ name, address, phone number, website and whether or not the doctor is accepting 
 dropdown menu. If the API call returns an error, the user will be notified about the error and what the error is. If the search returns no results,
 the user will be notified accordingly.
 
+Note: If your API request is not successful and you receive an "Origin is not allowed by Access-Control-Allow-Origin" error in your console,
+try installing the Allow-Control-Allow-Origin: * Chrome extension at https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en.
+
 ## Known Bugs
 
 * No known bugs.
