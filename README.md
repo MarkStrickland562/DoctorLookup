@@ -4,15 +4,19 @@
 
 [**MarkStrickland562**](https://github.com/MarkStrickland562)
 
-## **Super Galactic Age Calculator**
+## **Doctor Looup**
 
-###### Created March 22nd, 2019.
+###### Created March 29th, 2019.
 
 ----------
 
 ## Description
-A solar year lasts 365 days on planet Earth. However, the length of a solar year varies from planet to planet. This application will determine a user's age based on a planet's solar years
-including the planets Mercury, Venus, Mars, Jupiter and Saturn. The application will also calculate how many years a user has left on each planet based on average life expectancy.
+This project uses the BetterDoctor API for providing access to a dataset of medical data that will be used for enabling the end-user to search
+for a list of Doctors in the Seattle area based on a medical issue or name of the doctor or location. The data returned will include the first name, last
+name, address, phone number, website and whether or not the doctor is accepting new patients. The list of specialties available will be provided in a
+dropdown menu. If the API call returns an error, the user will be notified about the error and what the error is. If the search returns no results,
+the user will be notified accordingly.
+
 ## Known Bugs
 
 * No known bugs.
@@ -22,327 +26,139 @@ including the planets Mercury, Venus, Mars, Jupiter and Saturn. The application 
 <details>
   <summary>Click Here for Specifications</summary>
 
-<table>
-  <tr>
-    <th>Specification 01</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must allow input of a user's date of birth</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Date of Birth</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Acknowledgment that a date of birth was entered</td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <th>Specification 01</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>The application will require that the end-user enter search criteria. If no criteria are entered, the user will be alerted</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>No search criteria</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>A message indicating that search criteria are required</td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <th>Specification 02</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>A non-null value for date of birth must be entered</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>A non-null value</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Error message if a value was not entered</td>
-  </tr>
-</table>
 
-<table>
-  <tr>
-    <th>Specification 03</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The value must be a valid date in the past</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Valid date in the past</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Error message if the entered value is not valid</td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <th>Specification 02</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>The application will query the BetterDoctor API for a list of doctors based on last name</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>Name of a doctor</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>Information about that doctor if it exists</td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <th>Specification 04</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must return the user's age in Earth years</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Valid date in the past</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Age in Earth years</td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <th>Specification 03</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>The application will query the BetterDoctor API for a list of doctors based on medical issue</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>A medical issue</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>A list of doctors who can treat the medical issue</td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <th>Specification 05</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must return the entered age in Mercury years (1 Mercury year = .24 Earth years)</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Age in Mercury years</td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <th>Specification 03</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>The application will query the BetterDoctor API for a list of doctors based on location</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>A location</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>A list of doctors who are located in that location</td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <th>Specification 06</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must return the entered age in Venus years (1 Venus year = .62 Earth years)</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Age in Venus years</td>
-  </tr>      
-</table>
+  <table>
+    <tr>
+      <th>Specification 04</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>If the search returns data, the list of doctors will include first name, last name, phone number, website, and whether the doctor is accepting new patients</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>Search criteria that will return data</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>Doctor(s) first name, last name, phone number, website, and if the doctor(s) are accepting new patients</td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <th>Specification 07</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must return the entered age in Mars years (1 Mars year = 1.88 Earth years)</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Age in Mars years</td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <th>Specification 05</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>If the API call returns an error, the user will be notified about the error and what the error is.</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>A misspelled version of the API's URL</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>An error number and message</td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <th>Specification 08</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must return the entered age in Jupiter years (1 Jupiter year = 11.86 Earth years)</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Age in Jupiter years</td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Specification 09</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must return the entered age in Saturn years (1 Saturn year = 29.457 Earth years)</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Age in Saturn years</td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Specification 10</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must allow input of a user's life expectancy</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Life Expectancy</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Acknowledgment that a life expectancy was entered</td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Specification 11</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must calculate the users life expectancy on Mercury</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Life expectancy on Mercury</td>
-  </tr>    
-</table>
-
-<table>
-  <tr>
-    <th>Specification 12</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must calculate the users life expectancy on Venus</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Life expectancy on Venus</td>
-  </tr>    
-</table>
-
-<table>
-  <tr>
-    <th>Specification 13</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must calculate the users life expectancy on Mars</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Life expectancy on Mars</td>
-  </tr>    
-</table>
-
-<table>
-  <tr>
-    <th>Specification 14</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must calculate the users life expectancy on Jupiter</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Life expectancy on Jupiter</td>
-  </tr>    
-</table>
-
-<table>
-  <tr>
-    <th>Specification 15</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must calculate the users life expectancy on Saturn</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Life expectancy on Saturn</td>
-  </tr>    
-</table>
-
-<table>
-  <tr>
-    <th>Specification 16</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>If the user has surpassed their life expectancy, the application must return the number of years they have lived past their life expectancy</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Number of years lived passed life expectancy</td>
-  </tr>    
-</table>
-<table>
-  <tr>
-    <th>Specification 17</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Behavior</td>
-    <td>The application must account for leap years in calculating age.</td>
-  </tr>
-  <tr>
-    <td>Input</td>
-    <td>Positive integer</td>
-  </tr>
-  <tr>
-    <td>Output</td>
-    <td>Number of leap days to be accounted for</td>
-  </tr>    
-</table>
+  <table>
+    <tr>
+      <th>Specification 06</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>If the API call returns no data, the user will be notified accordingly</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>A search guaranteed to not return data</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>A message indicating that no doctors were found that meet the search criteria</td>
+    </tr>      
+  </table>
 </details>
 
 ## Setup and Use
@@ -379,14 +195,14 @@ including the planets Mercury, Venus, Mars, Jupiter and Saturn. The application 
 
 
 #### Download the Repository
-1. Clone [this repository](https://github.com/MarkStrickland562/GalacticAgeCalculator):
+1. Clone [this repository](https://github.com/MarkStrickland562/DoctorLooup):
 
-       $ git clone https://github.com/MarkStrickland562/GalacticAgeCalculator.git
+       $ git clone https://github.com/MarkStrickland562/DoctorLookup.git
 
 #### Install, build and run the application
 1. Navigate to the application root directory:
 
-       $ cd GalacticAgeCalculator
+       $ cd DoctorLookup
 2. Install the required packages:
 
        $ npm install
