@@ -14,6 +14,8 @@ $(document).ready(function() {
     let searchString = "";
     let tableText = "";
     let phone = "";
+    let website = "";
+    let accepting = "";
 
     if ($('#searchFirstName').val() != "") {
       searchString = "?first_name=" + $('#searchFirstName').val();
@@ -38,26 +40,38 @@ $(document).ready(function() {
       var table = $('#doctor-info');
 
       table.append('<thead><tr><th>First Name</th><th>Last Name</th><th>Phone Number(s)</th><th>Website</th><th>Accepting Patients?</th></tr></thead>');
-          body.data.forEach(function(doctor) {
-            tableText = '<tr><td>' + doctor.profile.first_name + '</td>' +
-                             '<td>' + doctor.profile.last_name + '</td>';
-            phone = '<td>';
-            doctor.practices.forEach(function(practice) {
-              phone += practice.phones[0].number + ' ';
-            });
-            phone += '</td>';
-            tableText += phone;
-//                             '<td>' + doctor.practices[0].website + '</td>' +
-//                             '<td>' + doctor.practices[0].accepts_new_patients + '</td>' +
-            tableText += '</tr>';
-            table.append(tableText);
-doctor.practices.forEach(function(practice) {
-console.log(doctor.profile.first_name + ' ' + doctor.uid);
-console.log(practice.phones);
-});
+      body.data.forEach(function(doctor) {
+        tableText = '<tr><td>' + doctor.profile.first_name + '</td>' +
+                         '<td>' + doctor.profile.last_name + '</td>';
+        phone = '<td>';
+        website = '<td>';
+        accepting = '<td>';
+        doctor.practices.forEach(function(practice) {
+          practice.phones.forEach(function(thephone) {
+            phone += thephone.number + '<br>';
           });
-          $("#searching").hide();
-          $("#doctor-info").show();
+          if (practice.website != undefined) {
+            website += practice.website;
+          }
+        });
+        if (doctor.practices[0] != undefined && doctor.practices[0].accepts_new_patients != undefined) {
+          if (doctor.practices[0].accepts_new_patients === true) {
+            accepting += 'Yes';
+          } else {
+            accepting += 'No';
+          }
+        }
+        phone += '</td>';
+        website += '</td>';
+        accepting += '</td>';
+        tableText += phone;
+        tableText += website;
+        tableText += accepting;
+        tableText += '</tr>';
+        table.append(tableText);
+      });
+      $("#searching").hide();
+      $("#doctor-info").show();
 
 // console.log(body.data[0].profile.first_name);
 // console.log(body.data[0].profile.last_name);
@@ -71,7 +85,6 @@ console.log(practice.phones);
 // console.log(body.data[0].profile.image_url);
 // console.log(body.data[0].uid);
 
-// website:  doctor.
     });
   });
 });
