@@ -12,15 +12,12 @@ $(document).ready(function() {
   let searchString = "";
 
   if (nameSearch != "") {
-    searchString = "&name=" + nameSearch;
+    searchString = "?name=" + nameSearch;
   } else if (issueSearch != "") {
-    searchString = "&query=" + issueSearch;
+    searchString = "?query=" + issueSearch;
   } else {
-    searchString = "&location=47.608013%2C%20-122.335167" + locationSearch;
+    searchString = "?location=47.608013%2C%20-122.335167" + locationSearch;
   }
-
-  searchString = searchString + "&user_key=" + `${process.env.exports.apiKey}`;
-console.log(searchString);
 
   let doctorLookup = new DoctorLookup();
 
@@ -29,16 +26,16 @@ console.log(searchString);
     let body = JSON.parse(response);
 
 console.log(body.data[0].profile.first_name);
-console.log(body.data[0].profile.last_name);
-console.log(body.data[0].practices[0].visit_address.street);
-console.log(body.data[0].practices[0].visit_address.city);
-console.log(body.data[0].practices[0].visit_address.state);
-console.log(body.data[0].practices[0].visit_address.zip);
-console.log(body.data[0].practices[0].accepts_new_patients);
-console.log(body.data[0].practices[0].phones[0].number);
-console.log(body.data[0].practices[0].website);
-console.log(body.data[0].profile.image_url);
-console.log(body.data[0].uid);
+// console.log(body.data[0].profile.last_name);
+// console.log(body.data[0].practices[0].visit_address.street);
+// console.log(body.data[0].practices[0].visit_address.city);
+// console.log(body.data[0].practices[0].visit_address.state);
+// console.log(body.data[0].practices[0].visit_address.zip);
+// console.log(body.data[0].practices[0].accepts_new_patients);
+// console.log(body.data[0].practices[0].phones[0].number);
+// console.log(body.data[0].practices[0].website);
+// console.log(body.data[0].profile.image_url);
+// console.log(body.data[0].uid);
 
 // website:  doctor.
   });
