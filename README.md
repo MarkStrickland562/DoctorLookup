@@ -53,7 +53,7 @@ the user will be notified accordingly.
     </tr>
     <tr>
       <td>Behavior</td>
-      <td>The application will query the BetterDoctor API for a list of doctors based on last name</td>
+      <td>The application will query the BetterDoctor API for a list of doctors based on first or last name</td>
     </tr>
     <tr>
       <td>Input</td>
