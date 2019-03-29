@@ -8,17 +8,21 @@ $(document).ready(function() {
   $("#search-form").submit(function(event){
     event.preventDefault();
 
-    let nameSearch = $('#searchLastName').val();
-    let issueSearch = "";
-    let locationSearch = "";
     let searchString = "";
 
-    if (nameSearch != "") {
-      searchString = "?name=" + nameSearch;
-    } else if (issueSearch != "") {
-      searchString = "?query=" + issueSearch;
+    if ($('#searchFirstName').val() != "") {
+      searchString = "?first_name=" + $('#searchFirstName').val();
+    } else if ($('#searchLastName').val() != "") {
+      searchString = "?last_name=" + $('#searchLastName').val();
+    } else if ($('#searchFullName').val() != "") {
+      searchString = "?name=" + $('#searchFullName').val();
+    } else if ($('#searchIssue').val() != "") {
+      searchString = "?query=" + $('#searchIssue').val();
+    } else if ($('#searchLocation').val() != "") {
+//     searchString = "?location=" + $('#searchLocation').val();
+      searchString = "?location=47.608013%2C%20-122.335167"
     } else {
-      searchString = "?location=47.608013%2C%20-122.335167" + locationSearch;
+      alert("Please enter search criteria!");
     }
 
     let doctorLookup = new DoctorLookup();
@@ -27,8 +31,8 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
 
-      console.log(body.data[0].profile.first_name);
-// console.log(body.data[0].profile.last_name);
+// console.log(body.data[0].profile.first_name);
+ console.log(body.data[0].profile.last_name);
 // console.log(body.data[0].practices[0].visit_address.street);
 // console.log(body.data[0].practices[0].visit_address.city);
 // console.log(body.data[0].practices[0].visit_address.state);
