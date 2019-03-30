@@ -134,7 +134,18 @@ let getDoctorData = function(searchString) {
   });
 }
 
+let getSpecialties = function() {
+
+  let specialties = new DoctorLookup();
+  let promise = specialties.getSpecialties();
+  promise.then(function(response) {
+    let body = JSON.parse(response);
+console.log(body);
+  });
+}
+
 $(document).ready(function() {
+  getSpecialties();
   $("#search-form").submit(function(event){
     event.preventDefault();
 
