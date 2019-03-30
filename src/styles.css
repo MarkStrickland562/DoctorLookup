@@ -13,6 +13,7 @@ body {
 #search-form {
   font-size: 18px;
   color: darkblue;
+  border-color: darkblue;
 }
 
 h1, h5 {
@@ -21,24 +22,32 @@ h1, h5 {
 
 #searching {
   display: none;
+  color: darkblue;
 }
 
 #nodata {
   display: none;
-  color: darkred;
+  color: red;
   font-style: italic;
+}
+
+#error {
+  display: none;
+  color: red;
 }
 
 #doctor-info {
   display: none;
+  color: darkblue;
 }
 
-.row-header {
-  border-width: 2px;
+#table-data {
+  display: none;
 }
 
-.row-data {
-  border-width: 2px;
+.table-header {
+  background-color: darkblue;
+  color: white;
 }
 
 .btn-submit {
@@ -54,9 +63,12 @@ h1, h5 {
 table {
   width: 60%;
   border: 2px solid black;
+  border-color: darkblue;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  vertical-align: center;
+  color: darkblue;
 }
 
 th {
@@ -67,6 +79,5 @@ th {
 
 td {
   font-size: 12px;
-  padding: 15px;
   border: 2px solid black;
 }
