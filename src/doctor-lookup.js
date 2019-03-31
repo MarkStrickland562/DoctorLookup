@@ -8,7 +8,7 @@ export default class DoctorLookup {
         searchString = searchString.replace(',', '%2C');
         searchString = searchString.replace(' ', '');
         let url = "http://open.mapquestapi.com/geocoding/v1/address?key=" + `${process.env.exports.geoCodeKey}` + searchString;
-        let geocodeLookup = new GeocodeLookup(url);
+        let geocodeLookup = new GeocodeLookup();
         let promise = geocodeLookup.getGeocode(url);
         promise.then(function(response) {
           let body = JSON.parse(response);
