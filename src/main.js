@@ -29,16 +29,18 @@ let validateSearchCriteria = function() {
     searchString = "?last_name=" + $('#searchLastName').val();
   } else if ($('#searchFullName').val() != "") {
     searchString = "?name=" + $('#searchFullName').val();
-  } else if ($('#searchIssue').val() != "Any Specialty") {
+  } else if ($('#searchIssue').val() != "") {
     searchString = "?query=" + $('#searchIssue').val();
   } else if ($('#searchLocation').val() != "") {
-//     searchString = "?location=" + $('#searchLocation').val();
-    searchString = "?location=47.608013%2C%20-122.335167"
-  } else if ($('#searchSpecialty').val() != "") {
+    getGeocode($('#searchLocation').val());
+    searchString = "?location=" + $('#lat').val() + "%2C" + $('#lng').val() + "%2C100";
+//    searchString = "?location=47.608013%2C-122.335167%2C100"
+  } else if ($('#searchSpecialty').val() != "Any Specialty") {
     searchString = "?query=" + $('#searchSpecialty').val();
   } else {
     alert("Please enter search criteria!");
   }
+console.log(searchString);
   return searchString;
 }
 
@@ -138,13 +140,24 @@ let getSpecialties = function() {
   });
 }
 
+let getGeocode = function(searchString) {
+  let geoCode = new DoctorLookup();
+  let promise = geoCode.getGeocode(searchString);
+  promise.then(function(response) {
+    let body = JSON.parse(response);
+    let lat = body.results[0].locations[0].displayLatLng.lat;
+    let lng = body.results[0].locations[0].displayLatLng.lng;
+    $("#lat").val(lat);
+    $("#lng").val(lng);
+  });
+}
+
 $(document).ready(function() {
   getSpecialties();
   $("#search-form").submit(function(event){
     event.preventDefault();
 
     $("#table-rows").remove();
-//    $("#table-data").hide();
     $("#doctor-info").hide();
     $("#searching").show();
     $("#nodata").hide();
