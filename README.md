@@ -11,11 +11,10 @@
 ----------
 
 ## Description
-This project uses the BetterDoctor API for providing access to a dataset of medical data that will be used for enabling the end-user to search
-for a list of Doctors in the Seattle area based on a medical issue or name of the doctor or location. The data returned will include the first name, last
-name, address, phone number, website and whether or not the doctor is accepting new patients. The list of specialties available will be provided in a
-dropdown menu. If the API call returns an error, the user will be notified about the error and what the error is. If the search returns no results,
-the user will be notified accordingly.
+This project uses the BetterDoctor API for providing access to a dataset of medical data that will be used for enabling the end-user to search for a list of Doctors in the Seattle area based on a medical issue or name of the doctor or location or specialty. The data returned will include the first name, last name, address, phone number, website and whether or not the doctor is accepting new patients. The list of specialties available will be provided in a dropdown menu. If the API call returns an error, the user will be notified about the error and what the error is. If the search returns no results, the user will be notified accordingly.
+
+Note: This project uses the Mapquest API for getting geocodes and you will need an API key for the search by location 
+functionality to work.
 
 Note: If your API request is not successful and you receive an "Origin is not allowed by Access-Control-Allow-Origin" error in your console,
 try installing the Allow-Control-Allow-Origin: * Chrome extension at https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en.
@@ -194,6 +193,7 @@ try installing the Allow-Control-Allow-Origin: * Chrome extension at https://chr
 * babel-preset-es2015 6.24.1
 * clean-webpack-plugin 0.1.18
 * css-loader 0.28.10
+* dotenv-webpack 1.7.0
 * eslint 4.18.2
 * eslint-loader 2.0.0
 * file-loader 3.0.1
