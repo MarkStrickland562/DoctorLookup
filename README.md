@@ -89,7 +89,7 @@ try installing the Allow-Control-Allow-Origin: * Chrome extension at https://chr
 
   <table>
     <tr>
-      <th>Specification 03</th>
+      <th>Specification 04</th>
       <th></th>
     </tr>
     <tr>
@@ -108,7 +108,26 @@ try installing the Allow-Control-Allow-Origin: * Chrome extension at https://chr
 
   <table>
     <tr>
-      <th>Specification 04</th>
+      <th>Specification 05</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Behavior</td>
+      <td>The application will query the BetterDoctor API for a list of doctors based on specialty</td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td>A location</td>
+    </tr>
+    <tr>
+      <td>Output</td>
+      <td>A list of doctors who have that specialty</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <th>Specification 06</th>
       <th></th>
     </tr>
     <tr>
@@ -127,7 +146,7 @@ try installing the Allow-Control-Allow-Origin: * Chrome extension at https://chr
 
   <table>
     <tr>
-      <th>Specification 05</th>
+      <th>Specification 07</th>
       <th></th>
     </tr>
     <tr>
@@ -146,7 +165,7 @@ try installing the Allow-Control-Allow-Origin: * Chrome extension at https://chr
 
   <table>
     <tr>
-      <th>Specification 06</th>
+      <th>Specification 08</th>
       <th></th>
     </tr>
     <tr>

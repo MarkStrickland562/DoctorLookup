@@ -9,8 +9,6 @@ export default class DoctorLookup {
         searchString = searchString.replace(' ', '');
         let url = "http://open.mapquestapi.com/geocoding/v1/address?key=" + `${process.env.exports.geoCodeKey}` + searchString;
         let geocodeLookup = new GeocodeLookup(url);
-console.log(searchString);
-console.log(url);
         let promise = geocodeLookup.getGeocode(url);
         promise.then(function(response) {
           let body = JSON.parse(response);
@@ -46,11 +44,9 @@ console.log(url);
   }
 
   getSpecialties() {
-
     let url = "https://api.betterdoctor.com/2016-03-01/specialties" + "?user_key=" + `${process.env.exports.apiKey}`;
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
