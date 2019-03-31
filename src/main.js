@@ -10,6 +10,7 @@ let clearSearch = function() {
   $("#searchFullName").val('');
   $("#searchIssue").val('');
   $("#searchLocation").val('');
+  $("#searchSpecialty").val('Any Specialty');
 }
 
 let formatPhone = function(phoneNumber) {
@@ -32,15 +33,12 @@ let validateSearchCriteria = function() {
   } else if ($('#searchIssue').val() != "") {
     searchString = "?query=" + $('#searchIssue').val();
   } else if ($('#searchLocation').val() != "") {
-    getGeocode($('#searchLocation').val());
-    searchString = "?location=" + $('#lat').val() + "%2C" + $('#lng').val() + "%2C100";
-//    searchString = "?location=47.608013%2C-122.335167%2C100"
+    searchString = "&location=" + $('#searchLocation').val();
   } else if ($('#searchSpecialty').val() != "Any Specialty") {
     searchString = "?query=" + $('#searchSpecialty').val();
   } else {
     alert("Please enter search criteria!");
   }
-console.log(searchString);
   return searchString;
 }
 
@@ -127,7 +125,6 @@ let getDoctorData = function(searchString) {
 }
 
 let getSpecialties = function() {
-
   let specialtyText = '<option value="Any Specialty">Any Specialty</option>';
   let specialties = new DoctorLookup();
   let promise = specialties.getSpecialties();
@@ -137,18 +134,6 @@ let getSpecialties = function() {
       specialtyText += '<option value="' + specialty.name + '">' + specialty.name + '</option>';
     });
     $("#searchSpecialty").append(specialtyText);
-  });
-}
-
-let getGeocode = function(searchString) {
-  let geoCode = new DoctorLookup();
-  let promise = geoCode.getGeocode(searchString);
-  promise.then(function(response) {
-    let body = JSON.parse(response);
-    let lat = body.results[0].locations[0].displayLatLng.lat;
-    let lng = body.results[0].locations[0].displayLatLng.lng;
-    $("#lat").val(lat);
-    $("#lng").val(lng);
   });
 }
 
