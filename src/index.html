@@ -6,7 +6,7 @@
   <body>
     <div class="container">
       <h1>Doctor Finder</h1>
-      <h5>Enter a value in one of the fields below to search for doctors</h5>
+      <h5>Enter a value in one of the fields below</h5>
       <br>
       <form id="search-form">
         <label for="searchFirstName">First Name:</label>
@@ -18,7 +18,10 @@
         <label for="searchIssue">Medical Issue:</label>
         <input type="text" id="searchIssue"><br>
         <label for="searchLocation">Location (City, State):</label>
-        <input type="text" id="searchLocation"><br><br>
+        <input type="text" id="searchLocation"><br>
+        <label for="searchSpecialty">Select a Specialty:</label>
+        <select id="searchSpecialty" name="searchSpecialty" type="text" value="">
+        </select><br><br>
         <button class="btn-submit" type="submit">Search</button>
       </form>
       <br>

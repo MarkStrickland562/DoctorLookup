@@ -29,11 +29,13 @@ let validateSearchCriteria = function() {
     searchString = "?last_name=" + $('#searchLastName').val();
   } else if ($('#searchFullName').val() != "") {
     searchString = "?name=" + $('#searchFullName').val();
-  } else if ($('#searchIssue').val() != "") {
+  } else if ($('#searchIssue').val() != "Any Specialty") {
     searchString = "?query=" + $('#searchIssue').val();
   } else if ($('#searchLocation').val() != "") {
 //     searchString = "?location=" + $('#searchLocation').val();
     searchString = "?location=47.608013%2C%20-122.335167"
+  } else if ($('#searchSpecialty').val() != "") {
+    searchString = "?query=" + $('#searchSpecialty').val();
   } else {
     alert("Please enter search criteria!");
   }
@@ -115,18 +117,6 @@ let getDoctorData = function(searchString) {
       $("#searching").hide();
       $("#nodata").show();
     }
-
-  // console.log(body.data[0].profile.first_name);
-  // console.log(body.data[0].profile.last_name);
-  // console.log(body.data[0].practices[0].visit_address.street);
-  // console.log(body.data[0].practices[0].visit_address.city);
-  // console.log(body.data[0].practices[0].visit_address.state);
-  // console.log(body.data[0].practices[0].visit_address.zip);
-  // console.log(body.data[0].practices[0].accepts_new_patients);
-  // console.log(body.data[0].practices[0].phones[0].number);
-  // console.log(body.data[0].practices[0].website);
-  //console.log(body.data[0].profile.image_url);
-  // console.log(body.data[0].uid);
   }, function(error) {
     $("#searching").hide();
     $("#error").show();
@@ -136,11 +126,15 @@ let getDoctorData = function(searchString) {
 
 let getSpecialties = function() {
 
+  let specialtyText = '<option value="Any Specialty">Any Specialty</option>';
   let specialties = new DoctorLookup();
   let promise = specialties.getSpecialties();
   promise.then(function(response) {
     let body = JSON.parse(response);
-console.log(body);
+    body.data.forEach(function(specialty) {
+      specialtyText += '<option value="' + specialty.name + '">' + specialty.name + '</option>';
+    });
+    $("#searchSpecialty").append(specialtyText);
   });
 }
 
